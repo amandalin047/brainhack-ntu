@@ -1,4 +1,4 @@
-# Software Installation: Python 3.11 and Related Packages for ML + EEG
+# Software Installation:<br>Python 3.11 and Related Packages for ML + EEG
 Python installation depends on your OS (operating system). As there's quite a bit of shell language involved in the set-up, here I also introduce two alternatives:
 - A user-friendly Python and R distribution plus package manager, _Anaconda_. 
 - A cloud-based alternative, _Google Colab_, which should be sufficient for the purposes of this course. That being said, configuring your own Python environment is still encouraged.
@@ -40,9 +40,9 @@ mleeg\Scripts\activate
 pip install -r requirements.txt
 ```
 - [MNE](https://mne.tools/stable/index.html) is the Python package for reading, processing, analyzing, and plotting EEG/MEG data.
-- [PyTorch]() is 
-- [EEGDash]() is
-- [Braindecode]() is
+- [PyTorch](https://pytorch.org/) is an open-source deep learning framework for building and training neural networks in Python, with flexible, research-friendly GPU support.
+- [EEGDash](https://eegdash.org/) is a Python toolkit and data platform for querying, downloading, and organizing large EEG/MEG datasets in formats ready for deep-learning workflows (via PyTorch and Braindecode).
+- [Braindecode](https://braindecode.org/) is an open-source Python toolbox for decoding raw electrophysiological brain data using deep learning models, with built-in dataset loaders, preprocessing, and standard model architectures.
 - [Pandas](https://pandas.pydata.org/docs/) is a powerful library for data analysis and data manipulation in the form of `pandas.DataFrame`
 - [Openpyxl](https://openpyxl.readthedocs.io/en/stable/) is needed in order for Python to read from and write to Excel files.
     + Side note: Excel now accepts (or is about to accept) Python syntax and functions.
@@ -207,9 +207,9 @@ mleeg\Scripts\activate
 pip install -r requirements.txt
 ```
 - [MNE](https://mne.tools/stable/index.html) is the Python package for reading, processing, analyzing, and plotting EEG/MEG data.
-- [PyTorch](https://pytorch.org) is 
-- [EEGDash](https://eegdash.org/index.html) is
-- [Braindecode](https://braindecode.org/stable/index.html) is
+- [PyTorch](https://pytorch.org/) is an open-source deep learning framework for building and training neural networks in Python, with flexible, research-friendly GPU support.
+- [EEGDash](https://eegdash.org/) is a Python toolkit and data platform for querying, downloading, and organizing large EEG/MEG datasets in formats ready for deep-learning workflows (via PyTorch and Braindecode).
+- [Braindecode](https://braindecode.org/) is an open-source Python toolbox for decoding raw electrophysiological brain data using deep learning models, with built-in dataset loaders, preprocessing, and standard model architectures.
 - [Pandas](https://pandas.pydata.org/docs/) is a powerful library for data analysis and data manipulation in the form of `pandas.DataFrame`
 - [Openpyxl](https://openpyxl.readthedocs.io/en/stable/) is needed in order for Python to read from and write to Excel files.
     + Side note: Excel now accepts (or is about to accept) Python syntax and functions.
