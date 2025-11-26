@@ -1,0 +1,7 @@
+jupyterlab
+mne
+braindecode
+eegdash
+joblib
+ipython
+openpyxl

@@ -1,0 +1,36 @@
+# ----- OS junk -----
+.DS_Store
+
+# ----- Python cruft -----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# ----- Virtual environments -----
+venv/
+.venv/
+env/
+.env/
+ENV/
+*.env
+
+# ----- Jupyter notebooks -----
+.ipynb_checkpoints/
+Untitled*.ipynb
+
+# ----- Data files -----
+HBN-EEG_data/
+
+# ----- VS Code / editor stuff (optional but recommended) -----
+.vscode/
+*.code-workspace
+
+# ----- Misc build / cache -----
+*.egg-info/
+.dist/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
