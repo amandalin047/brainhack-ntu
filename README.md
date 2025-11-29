@@ -63,8 +63,6 @@ pip install -r requirements.txt
 
 After it's done, type `pip list` (or `py -m pip list`) again. You should now see a long list of packages installed.
 
-<img src="https://github.com/amandalin047/brainhack-ntu/blob/main/screenshots/screenshot2.png" alt="Python packes via PIP" width="700">
-
 ### Opening Jupyter Lab
 No we're ready to open your Jupyter Lab! Type
 ```
