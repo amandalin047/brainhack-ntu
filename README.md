@@ -12,7 +12,7 @@ Sections:
 In the Windows start menu search bar, type `Python` to see which versions you have installed. If it's already 3.11, skip to section [Python packages via PIP](#python-packages-via-pip); if not, read on to install Python 3.11
 
 ### Python 3.11 official installer
-Go the the [official Python website](https://www.python.org/downloads/release/python-3115/). Select "Windows installer 64-bit" (if an error occurs and the installation fails, your devic is on a 32-bit processor, so switch to "Windows installer 32-bit"). After the installer file has been downloaded, double-click on the file to run it. In the pop out window, check off ☑️ "Install launcher for all users (recommended)" and ☑️ "Add Python 3.11 to PATH", then click "Install Now".
+Go to the [official Python website](https://www.python.org/downloads/release/python-3115/). Select "Windows installer 64-bit" (if an error occurs and the installation fails, your device is on a 32-bit processor, so switch to "Windows installer 32-bit"). After the installer file has been downloaded, double-click on the file to run it. In the pop out window, check off ☑️ "Install launcher for all users (recommended)" and ☑️ "Add Python 3.11 to PATH", then click "Install Now".
 
 <img src="https://github.com/amandalin047/brainhack-ntu/blob/main/screenshots/screenshot1.png" alt="Python Intsaller for Windows" width="300">
 
@@ -64,13 +64,13 @@ pip install -r requirements.txt
 After it's done, type `pip list` (or `py -m pip list`) again. You should now see a long list of packages installed.
 
 ### Opening Jupyter Lab
-No we're ready to open your Jupyter Lab! Type
+Now we're ready to open your Jupyter Lab! Type
 ```
 jupyter-lab
 ```
 which will automatically open a browser tab (if it doesn't, copy and paste any one of the URLs, e.g., `http:/localhost:blahblahblah` into your browser search bar), and voila! There's your Jupyter Lab! Note also that you do not need the internet to run Jupyter; localhost refers to your device. 
 
-Last step, open a new Jupyter notebook (in the Launcher, select "Pytnon 3 ipython kernel") and paste the following lines into the first cell, then hit Run:
+Last step, open a new Jupyter notebook (in the Launcher, select "Python 3 IPython kernel") and paste the following lines into the first cell, then hit Run:
 ```
 import mne
 import numpy as np
@@ -97,7 +97,7 @@ deactivate
 Suppose you've closed your terminal and wish to relaunch it, you have to go to the `brainhack-ntu` folder and _activate_ `mleeg`, after which you may then launch Jupyter:
 ```
 cd brainhack-ntu
-mleeg/Scripts/activate
+mleeg\Scripts\activate
 jupyter lab
 ```
 
@@ -201,7 +201,7 @@ After installation, create a new folder called `brainhack-ntu`, **put `talk-12-0
 ```
 cd brainhack-ntu
 virtualenv mleeg
-mleeg\Scripts\activate
+source mleeg/bin/activate
 pip install -r requirements.txt
 ```
 - [MNE](https://mne.tools/stable/index.html) is the Python package for reading, processing, analyzing, and plotting EEG/MEG data.
@@ -215,13 +215,13 @@ pip install -r requirements.txt
 After it's done, type `pip3 list` again. You should now see a long list of packages installed.
 
 ### Opening Jupyter Lab
-No we're ready to open your Jupyter Lab! Type
+Now we're ready to open your Jupyter Lab! Type
 ```
 jupyter lab
 ```
 which will automatically open a browser tab (if it doesn't, copy and paste any one of the URLs, e.g., `http:/localhost:blahblahblah` into your browser search bar), and voila! There's your Jupyter Lab! Note also that you do not need the internet to run Jupyter; localhost refers to your device. 
 
-Last step, open a new Jupyter notebook (in the Launcher, select "Pytnon 3 ipython kernel") and paste the following lines into the first cell, then hit Run:
+Last step, open a new Jupyter notebook (in the Launcher, select "Python 3 IPython kernel") and paste the following lines into the first cell, then hit Run:
 ```
 import mne
 import numpy as np
