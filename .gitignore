@@ -34,3 +34,6 @@ build/
 dist/
 .pytest_cache/
 .mypy_cache/
+
+machine-learning/nilearn_cache/
+meavhine-learning/nilearn_data/
