@@ -15,6 +15,7 @@ env/
 .env/
 ENV/
 *.env
+mleeg/
 
 # ----- Jupyter notebooks -----
 .ipynb_checkpoints/
