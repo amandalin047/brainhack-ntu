@@ -36,4 +36,4 @@ dist/
 .mypy_cache/
 
 machine-learning/nilearn_cache/
-meavhine-learning/nilearn_data/
+machine-learning/nilearn_data/
