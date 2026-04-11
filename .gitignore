@@ -36,7 +36,7 @@ dist/
 .pytest_cache/
 .mypy_cache/
 
-machine-learning/nilearn_cache/
-machine-learning/nilearn_data/
+machine_learning/nilearn_cache/
+machine_learning/nilearn_data/
 draft.ipynb
 bids-and-mne/
