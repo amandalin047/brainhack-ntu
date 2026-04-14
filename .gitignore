@@ -8,14 +8,16 @@ __pycache__/
 *.pyd
 *.so
 
-# ----- Virtual environments -----
+# ----- Environments -----
 venv/
 .venv/
 env/
 .env/
 ENV/
 *.env
-mleeg/
+workshop_2025/mleeg/
+machine_learning/mlenv/
+deep_learning/dlenv/
 
 # ----- Jupyter notebooks -----
 .ipynb_checkpoints/
@@ -23,8 +25,12 @@ Untitled*.ipynb
 
 # ----- Data files -----
 HBN-EEG_data/
+machine_learning/nilearn_cache/
+machine_learning/nilearn_data/
+deep_learning/nilearn_cache/
+deep_learning/data/
 
-# ----- VS Code / editor stuff (optional but recommended) -----
+# ----- VS Code / editor stuff -----
 .vscode/
 *.code-workspace
 
@@ -36,7 +42,11 @@ dist/
 .pytest_cache/
 .mypy_cache/
 
-machine_learning/nilearn_cache/
-machine_learning/nilearn_data/
+# ----- My ugly drafts -----
 draft.ipynb
+
+# ----- I cloned a repo inside my repo LOL... -----
 bids-and-mne/
+deep_learning/binder/
+deep_learning/__requirements__.txt
+
