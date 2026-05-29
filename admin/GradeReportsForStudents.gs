@@ -99,11 +99,11 @@ function sendGradebooksToStudents(){
 
     function appendEmailAddress(fileName){
         if (fileName.startsWith("r") || fileName.startsWith("d")){
-            return fileName + ".some_suffix";
+            return fileName + "some_suffix";
         } else if (fileName.startsWith("g") || fileName.startsWith("u")){
             return mapper[fileName];
         } else {
-            return fileName + ".another_suffix"
+            return fileName + "another_suffix"
         }
     }
 
