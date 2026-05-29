@@ -63,7 +63,7 @@ function writeToGradeBooks(){
                     .setValues([HEADER]);
         studentSheet.getRange(2, 1, studentData.length, HEADER.length)
                     .setValues(studentData);  
-        Logger.log(`Data written into ${studentSS.getName()}`);
+        console.log(`Data written into ${studentSS.getName()}`);
     } 
     
     const studentDataDict = getGradesForEachStudent();
@@ -84,7 +84,7 @@ function writeToGradeBooks(){
             const studentSS = SpreadsheetApp.create(studentId);
             const ssFile = DriveApp.getFileById(studentSS.getId());
             ssFile.moveTo(folder);
-            Logger.log(`Created spreadsheet ${ssFile.getName()} in folder ${folder.getName()}`);
+            console.log(`Created spreadsheet ${ssFile.getName()} in folder ${folder.getName()}`);
             write(ssFile, studentDataDict[ssFile.getName()]);
         }
     })
