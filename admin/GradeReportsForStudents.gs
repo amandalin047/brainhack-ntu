@@ -53,7 +53,7 @@ function getGradesForEachStudent() {
     return studentDataDict;
 }
 
-
+// triggered q12h
 function writeToGradeBooks(){
     function write (ssFile, studentData) {
         const studentSS = SpreadsheetApp.openById(ssFile.getId());
