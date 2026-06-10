@@ -4,9 +4,9 @@ Based on the supplementary code, notebooks, and infrastructure scripts developed
 
 ## Purpose
 
-This repository was created to support teaching, debugging, and course infrastructure for BrainHack Taiwan–Singapore. Many examples are designed to expose the mechanics behind common machine learning, deep learning, and neuroimaging workflows, especially in cases where high-level libraries hide important implementation details.
+This repository was created to support advanced teaching, debugging, and course infrastructure for BrainHack Taiwan–Singapore. Many examples are designed to expose the mechanics behind common machine learning, deep learning, and neuroimaging workflows, especially in cases where high-level libraries hide important implementation details.
 
-The code emphasizes reproducibility, explicit validation, and methodological transparency. In several places, built-in library behavior is manually replicated or inspected to make the underlying computations easier to understand.
+The code emphasizes reproducibility, explicit validation, and methodological transparency. In several places, **built-in library behavior is manually replicated or inspected** to make the underlying computations easier to understand.
 
 ## Repository Structure
 
@@ -35,7 +35,7 @@ Topics include:
 - Bayesian mixture models
 - Support vector machines
 - Support vector regression
-- Optimization and KKT-based derivations for SVM/SVR
+- _Optimization and KKT-based derivations for SVM/SVR_
 
 The emphasis is on connecting machine learning implementation with the underlying mathematical and statistical ideas, rather than treating models as black-box API calls.
 
@@ -47,9 +47,9 @@ Topics include:
 
 - A one-layer neural network using a linear layer followed by softmax
 - Comparison between a manually trained one-layer neural network and logistic regression
-- Keras implementation with a manual training loop
+- Keras implementation with a _manual training loop_
 - Multi-layer perceptrons in both PyTorch and Keras
-- Nested cross-validation for hyperparameter tuning
+- _Nested cross-validation for hyperparameter tuning_
 - Learning rate, dropout, and weight decay tuning
 - Early stopping
 
