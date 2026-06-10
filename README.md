@@ -1,6 +1,6 @@
 # BrainHack Taiwan–Singapore 2026 Course Materials and Infrastructure
 
-This repository contains supplementary code, notebooks, and infrastructure scripts developed for BrainHack Taiwan–Singapore. The materials cover machine learning, deep learning, MNE-Python EEG analysis, BIDS workflows, EEG modeling, and course administration automation.
+Based on the supplementary code, notebooks, and infrastructure scripts developed for BrainHack Taiwan–Singapore, this repository highlights research-engineering skills through reproducible ML experiments, manual validation of library internals, neuroimaging workflows, and automation of course-scale data infrastructure. The materials cover **machine learning, deep learning, MNE-Python EEG analysis, BIDS workflows, and course administration automation.**
 
 ## Purpose
 
