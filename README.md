@@ -1,258 +1,107 @@
-# Software Installation:<br>Python 3.11 and Related Packages for ML + EEG
-Python installation depends on your OS (operating system). As there's quite a bit of shell language involved in the set-up, you can also use the following alternatives (not covered in this guide):
-- A user-friendly Python and R distribution plus package manager, _Anaconda_. 
-- A cloud-based alternative, _Google Colab_.
+# BrainHack Taiwan–Singapore 2026 Course Materials and Infrastructure
 
-Sections:
-- [Windows](#windows)
-- [MacOS](#macos)
+This repository contains supplementary code, notebooks, and infrastructure scripts developed for BrainHack Taiwan–Singapore. The materials cover machine learning, deep learning, MNE-Python EEG analysis, BIDS workflows, EEG modeling, and course administration automation.
 
-## Windows
-### Check for installed Pythons
-In the Windows start menu search bar, type `Python` to see which versions you have installed. If it's already 3.11, skip to section [Python packages via PIP](#python-packages-via-pip); if not, read on to install Python 3.11
+## Purpose
 
-### Python 3.11 official installer
-Go to the [official Python website](https://www.python.org/downloads/release/python-3115/). Select "Windows installer 64-bit" (if an error occurs and the installation fails, your device is on a 32-bit processor, so switch to "Windows installer 32-bit"). After the installer file has been downloaded, double-click on the file to run it. In the pop out window, check off ☑️ "Install launcher for all users (recommended)" and ☑️ "Add Python 3.11 to PATH", then click "Install Now".
+This repository was created to support teaching, debugging, and course infrastructure for BrainHack Taiwan–Singapore. Many examples are designed to expose the mechanics behind common machine learning, deep learning, and neuroimaging workflows, especially in cases where high-level libraries hide important implementation details.
 
-<img src="https://github.com/amandalin047/brainhack-ntu/blob/main/screenshots/screenshot1.png" alt="Python Intsaller for Windows" width="300">
+The code emphasizes reproducibility, explicit validation, and methodological transparency. In several places, built-in library behavior is manually replicated or inspected to make the underlying computations easier to understand.
 
-Launch your PowerShell, type
-```
-py --list
-```
-to show the Python versions that you have installed (and have been added to PATH). You should at least see 3.11.
-- 💡 To launch PowerShell, type "powershell" in the Windows start menu search bar and click on the PowerShell icon; if you're on Windows 11, press the Windows key and X.
+## Repository Structure
 
-### Python packages via PIP
-In the PowerShell, type
-```
-py -3.11 -m pip list
-```
-to see all the packages installed by PIP. If your Python 3.11 has just been installed, you'll only see `pip` itself and `setuptools`. In the following steps, we'll install a package called `virtualenv` to create a virtual environment:
-```
-py -3.11 -m pip install virtualenv
-```
-After installation, create a new folder called `brainhack-ntu`, **put `talk-12-06-2025.ipynb` and `requirements.txt` in `brainhack-ntu` at the top level**, then inside the terminal, we'll go to that folder, create a virtual environment named `mleeg`, and install relevant packages by executing the commands below one line at a time:
-```
-cd brainhack-ntu
-py -3.11 -m virtualenv mleeg
-mleeg\Scripts\activate
-pip install -r requirements.txt
-```
-- [MNE](https://mne.tools/stable/index.html) is the Python package for reading, processing, analyzing, and plotting EEG/MEG data.
-- [PyTorch](https://pytorch.org/) is an open-source deep learning framework for building and training neural networks in Python, with flexible, research-friendly GPU support.
-- [EEGDash](https://eegdash.org/) is a Python toolkit and data platform for querying, downloading, and organizing large EEG/MEG datasets in formats ready for deep-learning workflows (via PyTorch and Braindecode).
-- [Braindecode](https://braindecode.org/) is an open-source Python toolbox for decoding raw electrophysiological brain data using deep learning models, with built-in dataset loaders, preprocessing, and standard model architectures.
-- [Pandas](https://pandas.pydata.org/docs/) is a powerful library for data analysis and data manipulation in the form of `pandas.DataFrame`
-- [Openpyxl](https://openpyxl.readthedocs.io/en/stable/) is needed in order for Python to read from and write to Excel files.
-    + Side note: Excel now accepts (or is about to accept) Python syntax and functions.
-- ⚠️ In the third line, if you encounter an error related to execution policies, launch a new PowerShell window and **run as the administrator**. Type
-```
-Set-ExecutionPolicy Unrestricted 
-```
-then type
-```
-cd C:\Users\<your_user_name>\brainhack-ntu; mleeg\Scripts\activate
-```
-(change `<your_user_name>` to your actual device user name)
-to see if the error gets resolved. If so, proceed to the fourth line
-```
-pip install -r requirements.txt
-```
-- ⚠️ In the fourth line, if `pip` doesn't work, perhaps try `py -m pip`.
-
-After it's done, type `pip list` (or `py -m pip list`) again. You should now see a long list of packages installed.
-
-### Opening Jupyter Lab
-Now we're ready to open your Jupyter Lab! Type
-```
-jupyter-lab
-```
-which will automatically open a browser tab (if it doesn't, copy and paste any one of the URLs, e.g., `http:/localhost:blahblahblah` into your browser search bar), and voila! There's your Jupyter Lab! Note also that you do not need the internet to run Jupyter; localhost refers to your device. 
-
-Last step, open a new Jupyter notebook (in the Launcher, select "Python 3 IPython kernel") and paste the following lines into the first cell, then hit Run:
-```
-import mne
-import numpy as np
-import torch
-import eegdash
-import braindecode
-import pandas
-import sklearn
-import joblib
-from platform import python_version
-python_version()
-```
-There should be no errors, and 3.11.5 will be the output.
-
-<img src="https://github.com/amandalin047/brainhack-ntu/blob/main/screenshots/screenshot9.png" alt="pyenv init" width=400>
-
-### Deactivating virtual environments
-To deactivate a virtual environment, simply type
-```
-deactivate
+```text
+.
+├── machine_learning/
+├── deep_learning/
+├── mne_eeg/
+├── workshop_2025/
+└── admin/
 ```
 
-### Final note
-Suppose you've closed your terminal and wish to relaunch it, you have to go to the `brainhack-ntu` folder and _activate_ `mleeg`, after which you may then launch Jupyter:
-```
-cd brainhack-ntu
-mleeg\Scripts\activate
-jupyter lab
-```
+## `machine_learning/`
 
-## MacOS
-### Pre-installed Python
-Since most macOS computers come with Python pre-installed (please do not modify your mac's pre-installed Python as it would mess with your system), it's always a good practice to check which Python version you have on your device. Go to your terminal and type `python --version` which probably isn't 3.11.5. The steps below will install the latest Python release and a virtual environment for better package version/dependency management.
-- 💡 To launch the mac terminal, click on the Launchpad icon in the Dock, type `Terminal` in the search field, then click Terminal.
-- 💡 Apple installs Python in `usr/bin/`, so don't touch anything related to Python in that directory!!!
+This folder contains basic to intermediate, and early-advanced, machine learning materials.
 
-### Install Xcode Command Line Tools
-Check if they're installed:
-```
-xcode-select --version
-```
-If they are, you'll get the corresponding version in your terminal output; if not, run
-```
-xcode-select --install
-```
-which will pop out a window asking you to install them. Click Install, and wait. You will then see a message display
-> The software was installed.
+Topics include:
 
-Click Done, and type 
-```
-xcode-select -p
-```
-in the terminal, which should output
-> /Library/Developer/CommandLineTools
+- K-nearest neighbors
+- Logistic regression
+- Linear regression
+- Bias–variance trade-off
+- Code examples and mathematical decomposition of bias and variance
+- Cross-validation
+- Nested cross-validation
+- Bayesian mixture models
+- Support vector machines
+- Support vector regression
+- Optimization and KKT-based derivations for SVM/SVR
 
-### Install Homebrew
-In the terminal, type
-```
-brew --version 
-```
-to see if Homebrew is installed on your mac. If an error occurs, it is not installed. Type the following command to install Homebrew:
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-After installation, type
-```
-brew doctor
-```
-to check that everything's okay.
-- 💡 For an alternative way to install Python with less terminal code involved, please refer to [this page](https://github.com/amandalin047/brainhack-ntu/blob/installation/Appendix_A.md).
+The emphasis is on connecting machine learning implementation with the underlying mathematical and statistical ideas, rather than treating models as black-box API calls.
 
-### Install `pyenv` via Homebrew 
+## `deep_learning/`
 
-After Homebrew has been installed, run the following lines one line at a time in the terminal to install Python 3.11.5 and the packages we'll be using in class, along with several others I find useful for data analysis:
-```
-brew update && brew upgrade
-brew install pyenv
-```
+This folder contains deep learning examples for trial-level classification using single-subject fMRI connectivity data.
 
-After installation, run
-```
-pyenv init
-```
-<img src="https://github.com/amandalin047/brainhack-ntu/blob/main/screenshots/screenshot3.png" alt="pyenv init" width=400>
+Topics include:
 
-and look at the terminal output carefully; follow the instruction there, i.e.,  copy and paste the listed lines to your corresponding files, which in my case are `~/.bashrc` and `~/.profile` as I'm running Ubuntu in Windows Subsystem for Linux. Remember to save, then _source_ the files or _close and restart_ your terminal for the changes to take effect. 
-- 💡 If you've never modified such files and are lost at this step, feel free to screenshot what `pyenv init` outputs and [email me](https://docs.google.com/document/d/1JBO6eFAZ6MM8P9p1YiCILFfPHe5p0GV_/edit?usp=sharing&ouid=103533581234587701878&rtpof=true&sd=true) the picture.
+- A one-layer neural network using a linear layer followed by softmax
+- Comparison between a manually trained one-layer neural network and logistic regression
+- Keras implementation with a manual training loop
+- Multi-layer perceptrons in both PyTorch and Keras
+- Nested cross-validation for hyperparameter tuning
+- Learning rate, dropout, and weight decay tuning
+- Early stopping
 
-## Python via `pyenv`
-It's recommended to install build depedndencies before installing any Python version, so execute the following:
-```
-brew install openssl readline sqlite3 xz zlib tcl-tk
-```
-Now install Python 3.11.5 using pyenv (this may take a while):
-```
-pyenv install 3.11.5
-```
+The goal is to make the training mechanics explicit, including forward passes, loss computation, optimization, and validation-based model selection.
 
-Set Python to the newly installed version:
-```
-pyenv global 3.11.5
-```
+## `mne_eeg/`
 
-Type
-```
-which python
-```
-which should output something like 
-> blahblahblah/.pyenv/shims/python
+This folder contains in-depth explorations of the MNE-Python API and EEG analysis workflows.
 
-And typing
-```
-python --version
-```
-should get you the desired 3.11.5
+Topics include:
 
-### Python packages via PIP
-Now type
-```
-pip3 list
-```
-to see the packages installed by PIP, which in this case are probably just `pip` itself and `setuptools`. We want to install a package called `virtualenv` to create a virtual environment as mentioned in the beginning, so run
-```
-pip3 install virtualenv
-```
+- MNE-Python API exploration
+- Manual implementation of power spectral density analysis using SciPy FFT and Matplotlib
+- Replication of MNE built-in PSD plots using lower-level numerical tools
+- Manual verification of MNE ICA projection matrices
+- Comparison between MNE ICA internals and PCA-style matrix operations from scikit-learn
+- Manual verification of orthogonal projections in MNE SSP internals
+- BIDS-oriented EEG data handling and tutorial materials
 
-After installation, create a new folder called `brainhack-ntu`, **put `talk-12-06-2025.ipynb` and `requirements.txt` in `brainhack-ntu` at the top level**, then inside the terminal, we'll go to that folder, create a virtual environment named `mleeg`, and install relevant packages by executing the commands below one line at a time:
-```
-cd brainhack-ntu
-virtualenv mleeg
-source mleeg/bin/activate
-pip install -r requirements.txt
-```
-- [MNE](https://mne.tools/stable/index.html) is the Python package for reading, processing, analyzing, and plotting EEG/MEG data.
-- [PyTorch](https://pytorch.org/) is an open-source deep learning framework for building and training neural networks in Python, with flexible, research-friendly GPU support.
-- [EEGDash](https://eegdash.org/) is a Python toolkit and data platform for querying, downloading, and organizing large EEG/MEG datasets in formats ready for deep-learning workflows (via PyTorch and Braindecode).
-- [Braindecode](https://braindecode.org/) is an open-source Python toolbox for decoding raw electrophysiological brain data using deep learning models, with built-in dataset loaders, preprocessing, and standard model architectures.
-- [Pandas](https://pandas.pydata.org/docs/) is a powerful library for data analysis and data manipulation in the form of `pandas.DataFrame`
-- [Openpyxl](https://openpyxl.readthedocs.io/en/stable/) is needed in order for Python to read from and write to Excel files.
-    + Side note: Excel now accepts (or is about to accept) Python syntax and functions.
+The focus is on understanding what MNE is doing internally, rather than only using high-level function calls.
 
-After it's done, type `pip3 list` again. You should now see a long list of packages installed.
+## `workshop_2025/`
 
-### Opening Jupyter Lab
-Now we're ready to open your Jupyter Lab! Type
-```
-jupyter lab
-```
-which will automatically open a browser tab (if it doesn't, copy and paste any one of the URLs, e.g., `http:/localhost:blahblahblah` into your browser search bar), and voila! There's your Jupyter Lab! Note also that you do not need the internet to run Jupyter; localhost refers to your device. 
+This folder contains materials related to EEG modeling based on the NeurIPS 2025 EEG Challenge starter kit.
 
-Last step, open a new Jupyter notebook (in the Launcher, select "Python 3 IPython kernel") and paste the following lines into the first cell, then hit Run:
-```
-import mne
-import numpy as np
-import torch
-import eegdash
-import braindecode
-import pandas
-import sklearn
-import joblib
-from platform import python_version
-python_version()
-```
-There should be no errors, and 3.11.5 will be the output.
+Topics include:
 
-<img src="https://github.com/amandalin047/brainhack-ntu/blob/main/screenshots/screenshot9.png" alt="pyenv init" width=400>
+- EEG encoder implementation using EEGNeX
+- Starter-kit-based EEG modeling workflows
+- Custom EEGLAB export functions
+- Event handling
+- Annotation processing
 
-### Deactivating virtual environments
-To deactivate a virtual environment, simply type
-```
-deactivate
-```
-in the terminal. In addition, if you now type
-```
-pip3 list
-```
-after `mleeg` has been deactivated, you won't see any of the packages we just installed after `virtualenv`.
+These materials are intended for exploring EEG decoding/modeling workflows and improving interoperability between EEG analysis tools.
 
-### Final note
-Suppose you've closed your terminal and wish to relaunch it, you have to go to the `brainhack-ntu` folder and _activate_ `mleeg`, after which you may launch Jupyter:
-```
-cd brainhack-ntu
-source mleeg/bin/activate
-jupyter lab
-```
+## `admin/`
+
+This folder contains course infrastructure and administrative automation scripts.
+
+Contents include:
+
+- Google Apps Script code for course system automation
+- Submission handling scripts
+- Grading workflow automation
+- Google Sheets automation
+- Python scripts for final presentation scheduling
+- Constraint-satisfaction-style scheduling logic for assigning presentation slots under availability constraints
+
+This folder is primarily intended for reproducible course administration, reducing manual spreadsheet work, and documenting the infrastructure behind the course workflow.
+
+## Notes
+
+Some materials are educational or exploratory rather than polished software packages. The repository includes notebooks and scripts developed to clarify implementation details, verify library behavior, and support teaching/debugging during the course.
+
+Where applicable, student-identifying information has been removed or pseudonymized before public release.
