@@ -2,14 +2,16 @@ FINAL_PROJECT_FOLDER_ID = "ID1";
 SHEET_COPIES_FOLDER_ID = "ID2";
 PITCH_RESPONSE_SHEET_ID = "ID3";
 FINAL_RESPONSE_SHEET_ID = "ID4";
+AGGREGATE_PITCH_SHEET_ID = "ID5";
+AGGREGATE_FINAL_SHEET_ID = "ID6";
 
 function copySheets(whichWay="to") {
     function regexName(fileName){
         let grader = fileName.split("_")[1];
-        if (grader === "person-1"){
-            grader = "Person1";
-        } else if (grader === "person-2"){
-            grader = "Person2";
+        if (grader === "Some_Grader_1"){
+            grader = "SomeGrader1";
+        } else if (grader === "Some_Grader_2"){
+            grader = "SomeGrader2";
         }
         return grader;
     }
@@ -207,8 +209,6 @@ function structureFormData (mode = "pitch") {
         const graderData = getGraderData(graderName);
         graderDataDict[graderName] = graderData;
     })
-    
-    //Logger.log(graderDataDict["Josh"]);
   
     function getSchoolDataPerGrader(graderName){
         const graderData = graderDataDict[graderName];
@@ -287,3 +287,59 @@ function main () {
     copySheets(whichWay="back");
 }
 
+
+function aggregateDataForDownload(){
+    const folder = DriveApp.getFolderById(SHEET_COPIES_FOLDER_ID);
+    const files = folder.getFilesByType(MimeType.GOOGLE_SHEETS);
+
+    const pitchSS = SpreadsheetApp.openById(AGGREGATE_PITCH_SHEET_ID);
+    const finalSS = SpreadsheetApp.openById(AGGREGATE_FINAL_SHEET_ID);
+
+    function getData(ss, mode){
+        const sheet = ss.getSheetByName(mode);
+        const data = sheet.getDataRange()
+                          .getValues();
+        return data;
+    }
+
+    function insertData(mode, graderName, data){
+        const dict = {"pitch": pitchSS,
+                      "final": finalSS};
+        const ss = dict[mode];
+        let sheet;
+        if (! ss.getSheetByName(graderName)){
+            sheet = ss.insertSheet(graderName);
+        } else {
+            sheet = ss.getSheetByName(graderName);
+        }
+        sheet.getRange(1, 1, data.length, data[0].length)
+             .clearContent()
+             .setValues(data);
+    }
+
+    let j = 1;
+    while (files.hasNext()){
+        const file = files.next();
+        const fileName = file.getName();
+        if (fileName.startsWith("FinalProjectGrades")) {
+            const ss = SpreadsheetApp.openById(file.getId());
+            const pitchData = getData(ss, "pitch");
+            const finalData = getData(ss, "final");
+            
+            //const graderName = fileName.split("_")[1];
+            //insertData("pitch", graderName, pitchData);
+            //insertData("final", graderName, finalData);
+            insertData("pitch", `Grader ${j}`, pitchData);
+            insertData("final", `Grader ${j}`, finalData);
+            j += 1;
+        }
+    }
+
+    if (pitchSS.getSheetByName("Sheet1")){
+        pitchSS.deleteSheet(pitchSS.getSheetByName("Sheet1"));
+    }
+    if (finalSS.getSheetByName("Sheet1")){
+        finalSS.deleteSheet(finalSS.getSheetByName("Sheet1"));
+    }
+  
+}
